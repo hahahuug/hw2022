@@ -1,0 +1,14 @@
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.exe
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.deps.json
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.runtimeconfig.json
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.runtimeconfig.dev.json
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.dll
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\bin\Debug\netcoreapp3.1\HttpServer.pdb
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.csproj.AssemblyReference.cache
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.AssemblyInfoInputs.cache
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.AssemblyInfo.cs
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.csproj.CoreCompileInputs.cache
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.dll
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.pdb
+C:\Users\alsu2\source\repos\HttpServer\HttpServer\obj\Debug\netcoreapp3.1\HttpServer.genruntimeconfig.cache
