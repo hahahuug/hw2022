@@ -1,0 +1,632 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Google</title><!--заголовок для вкладки браузера -->
+    <link rel="shortcut icon" type="image/x-icon" href="g.png"> <!--подключаем иконку сайта  href="img/logomin.png">указываем путь до иконки-->
+
+    <title>Google</title>
+    <style>
+        /*Убрать подчеркивание ссылок*/
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+    <title>:hover</title>
+    <style>
+        body {
+            background: none;
+            color: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        #header {
+            background: none;
+            width: 100%;
+            height: 55px;
+        }
+
+        #container {
+            background: none;
+            margin: auto auto;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #content {
+            background: none;
+            /*display: flex;*/ /*FlexBox*/
+            /*align-items: center;*/ /*выравнивает по вертикали */
+            /*justify-content: center;*/ /*выравнивает по горизонтали*/
+            width: 100%;
+            height: 65%;
+            margin: 0 auto;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        #footer {
+            background: #f7f9faf1;
+            width: 100%;
+            height: 173px;
+        }
+
+        #footer1 {
+            background: #f7f9faf1;
+            width: 100%;
+            height: 50px;
+        }
+
+        #footer2 {
+            background: #f7f9faf1;
+            border: 1px solid #bbbcbd7c;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            width: 100%;
+            height: 25px;
+        }
+    </style>
+    <style>
+        /*кнопка входа*/
+        button.enter {
+            display: inline-block;
+            font-family: Arial;
+            font-size: 14px; /*размер шрифта*/
+            font-weight: 500; /*жирность шрифта*/
+            letter-spacing: 0.25px;
+            margin-right: 15px;
+            margin-left: 8px;
+            min-width: 96px;
+            line-height: 0px;
+            color: white;
+            */*цвет текста*/
+            text-decoration: none;
+            user-select: none;
+            padding: 4px 2px;
+            display: inline;
+            outline: none;
+            border: 0px solid rgba(0,0,0,.1);
+            border-radius: 5px;
+            background: #1a73e8;
+            linear-gradient(#f4f4f4, #f1f1f1);
+            transition: all .218s ease 0s;
+        }
+
+            button.enter:hover {
+                color: white;
+                border: 1px solid rgb(198,198,198);
+                background: #076adbe8;
+                box-shadow: 0 1px 2px rgba(0,0,0,.1);
+            }
+
+            button.enter:active {
+                color: blue;
+                border: 1px solid rgb(204,204,204);
+                background: rgb(238,238,238) linear-gradient(rgb(238,238,238), rgb(224,224,224));
+                box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+            }
+    </style>
+    <style>
+        /*Подсказка*/
+        [data-tooltip] {
+            position: fixed; /*позиционирование */
+            top: 15px;
+            right: 272px;
+        }
+
+            [data-tooltip]::after {
+                content: attr(data-tooltip); /* Выводим текст */
+                position: absolute; /* Абсолютное позиционирование */
+                width: 150px; /* Ширина подсказки */
+                height: 20px;
+                text-align: center;
+                column-fill: balance;
+                left: 0;
+                bottom: 300px; /* Положение подсказки */
+                background: #3b3838ea; /* Серый цвет фона */
+                color: #fff; /* Цвет текста */
+                padding: 0.1em; /* Поля вокруг текста */
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+                pointer-events: none; /* Подсказка */
+                opacity: 0; /* Подсказка невидима */
+                transition: 1s; /* Время появления подсказки */
+                border-radius: 6px;
+                font-family: Calibri;
+            }
+
+            [data-tooltip]:hover::after {
+                opacity: 1; /* Показываем подсказку */
+                top: 2.5em; /* Положение подсказки */
+            }
+    </style>
+    <style>
+        /*всплывающее окно приложения Google*/
+        .popup { /* стили модального окна */
+            position: fixed; /* фиксированное позиционирование, окно стабильно при прокрутке */
+            bottom: 50px;
+            top: -55px;
+            right: 18px;
+            /*width: 170%;*/ /* местоположение*/
+            /*height: 10%;*/
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+            .popup:target { /*актиыируем всплывание окна*/
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .popup__overlay { /*все вокруг окна*/
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0); /*затемнение фона*/
+        }
+
+        .popup__box { /* настрока самого всплывающего окна*/
+            margin: 115px auto;
+            width: 400px;
+            height: 584px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.52);
+            position: relative;
+            overflow-y: scroll; /*прокрутка по вертикали*/
+            /* скругление углов */
+            border-radius: 5px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+        }
+    </style>
+
+    <style>
+        /*кнопки всплывающего окна*/
+        .button {
+            /* Сбрасываем дефолтные стили */
+            border: none;
+            outline: none;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 10px;
+            font-family: Calibri;
+            padding: 20px 50px;
+            border-radius: 20px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+            color: none;
+            padding: 20px 20px 20px 20px;
+        }
+
+            .button.account {
+                background: none;
+                position: relative;
+                top: 20px;
+                left: 20px;
+                text-align: center;
+            }
+
+            .button.search {
+                background: none;
+                position: relative;
+                top: 20px;
+                left: 50px;
+                text-align: center;
+            }
+
+            .button.maps {
+                background: none;
+                position: relative;
+                top: 20px;
+                left: 80px;
+                text-align: center;
+            }
+
+            .button.youtube {
+                background: none;
+                position: relative;
+                top: 150px;
+                left: -265px;
+                text-align: center;
+            }
+
+            .button.play {
+                background: none;
+                position: relative;
+                top: 15px;
+                left: 145px;
+                text-align: center;
+            }
+
+            .button.news {
+                background: none;
+                position: relative;
+                top: 15px;
+                left: 175px;
+                text-align: center;
+            }
+
+            .button.mail {
+                background: none;
+                position: relative;
+                top: 145px;
+                left: -170px;
+                text-align: center;
+            }
+
+            .button.meet {
+                background: none;
+                position: relative;
+                top: 145px;
+                left: -140px;
+                text-align: center;
+            }
+
+            .button.chat {
+                background: none;
+                position: relative;
+                top: 10px;
+                left: 229px;
+                text-align: center;
+            }
+
+            .button.contacts {
+                background: none;
+                position: relative;
+                top: 140px;
+                left: -115px;
+                text-align: center;
+            }
+
+            .button.disk {
+                background: none;
+                position: relative;
+                top: 140px;
+                left: -95px;
+                text-align: center;
+            }
+
+            .button.calendar {
+                background: none;
+                position: relative;
+                top: 3px;
+                left: 235px;
+                text-align: center;
+            }
+
+            .button.translator {
+                background: none;
+                position: relative;
+                top: 140px;
+                left: -118px;
+                text-align: center;
+            }
+
+            .button.photo {
+                background: none;
+                position: relative;
+                top: 140px;
+                left: -110px;
+                text-align: center;
+            }
+
+            .button.duo {
+                background: none;
+                position: relative;
+                top: 4px;
+                left: 125px;
+                text-align: center;
+            }
+
+            .button.other {
+                background: none;
+                position: relative;
+                top: 5px;
+                left: 15px;
+                text-align: center;
+                background: none;
+                color: blue;
+                font-size: 10pt; /* Размер шрифта в пунктах */
+                border: groove;
+            }
+
+            .button:hover { /*подсветка при наведении курсора*/
+                background-color: #c8dffa98;
+            }
+    </style>
+
+    <style>
+        body {
+            background: none;
+        }
+
+        .searchT {
+            width: 100%; /*рамзер поля*/
+            position: fixed;
+            bottom: 25px;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 900px;
+            border: 1px solid #d3dae3e8;
+            border-right: none;
+            border-left: none;
+            padding: 5px;
+            height: 50px;
+            border-radius: 0px 0 0 0px;
+            outline: none;
+        }
+
+            .searchTerm:focus {
+                color: black;
+            }
+
+        .searchButton {
+            width: 90px;
+            height: 50px;
+            border: 1px solid #d3dae3e8;
+            background: none;
+            border-right: none;
+            text-align: center;
+            color: #eeeeee;
+            border-radius: 30px 0px 0px 30px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .keyboardButton {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #d3dae3e8;
+            background: none;
+            border-left: none;
+            border-right: none;
+            text-align: center;
+            color: #eeeeee;
+            border-radius: 0 0px 0px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .microButton {
+            width: 90px;
+            height: 50px;
+            border: 1px solid #d3dae3e8;
+            background: none;
+            border-left: none;
+            text-align: center;
+            color: #eeeeee;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .wrap {
+            width: 40%;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <style>
+        .buttonCenter {
+            border: 1px solid #eeeeee;
+            outline: none;
+            display: inline-block;
+            text-align: end;
+            text-decoration: none;
+            font-size: 12px;
+            font-family: Calibri;
+            font-weight: 500;
+            padding: 1px 25px;
+            color: none;
+            border-radius: 5px 5px 5px 5px;
+        }
+
+        .button.text1 {
+            /*width: 70px;
+                height: 50px;*/
+            border: 1px solid #d3dae3e8;
+            background: none;
+            text-align: center;
+            color: #eeeeee;
+            cursor: pointer;
+        }
+
+        .button.text2 {
+            /*width: 70px;
+                height: 50px;*/
+            border: 1px solid #d3dae3e8;
+            background: none;
+            text-align: center;
+            color: #eeeeee;
+            cursor: pointer;
+        }
+
+        .buttonCenter:hover { /*подсветка при наведении курсора*/
+            border: #bdc2c7e8;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <!--Верхняя шапка-->
+            <a href="https://mail.google.com/mail/u/0/?ogbl#inbox"
+               style="font-family: Calibri; font-size: 15px; display: inline-block; color: black; position: relative; top: 10px; right: -560px;">Почта</a>
+            <a href="https://www.google.ru/imghp?hl=ru&authuser=0&ogbl"
+               style="font-family: Calibri; font-size: 15px; display: inline-block; color: black; position: relative; top: 10px; right: -575px;">Картинки</a>
+            <a href="#popup1" class="btn" data-tooltip="Приложения Google">
+                <img src="https://sun2.tattelecom-nbc.userapi.com/impg/dC7Z5HqBaq6xJw43JoZrbRyyqcDlLBxvpBrH8Q/DpdkrmLHsYU.jpg?size=110x108&quality=96&sign=4d00a06eacfd8dc936e94ed3d9dfb5a5&type=album"
+                     width="18" height="18" style="position:relative; top:12px;  right:-130px;">
+            </a>
+            <button id="enter" class="button enter" onclick="window.location.href = 'https://accounts.google.com/ServiceLogin/signinchooser?hl=ru&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin';"
+                    style="position:relative; top:10px; right:-630px;">
+                <p> Войти </p>
+            </button>
+        </div>
+
+        <div id="popup1" class="popup">
+            <!--всплывающее окно приложений-->
+            <a href="#" class="popup__overlay"></a>
+            <div class="popup__box">
+                <a class="close" href="#"> </a>
+                <div class="content">
+                    <!--начинка всплывающего окна-->
+                    <!--<a href="https://www.google.com/account/about/?hl=ru" style="font-family: Calibri; font-size: 15px; text-align: center; display: inline-block"> <img src="appsg.jpg" width="25" height="25"> Аккаунт </a>
+                    <button style="background: none; width: 80px; height: 80px; border-radius: 5px; border: none; font-size: 10px;"> <img alt="" src="https://ssl.gstatic.com/accounts/signup/glif/account.svg"  width="25" height="25" style="text-align:center" />Аккаунт</button>-->
+
+                    <button id="account" class="button account" onclick="window.location.href = 'https://www.google.com/account/about/?hl=ru';">
+                        <span> <img src="https://lumpics.ru/wp-content/uploads/2016/12/Kak-posmotret-kontakty-v-Gugl-akkaunte.png" width="50" height="50"></span>
+                        <p> Аккаунт </p>
+                    </button>
+
+                    <button id="search" class="button search" onclick="window.location.href = 'https://www.google.ru/webhp';">
+                        <span> <img src="https://cdn.icon-icons.com/icons2/729/PNG/512/google_icon-icons.com_62736.png" width="50" height="50"></span>
+                        <p> Поиск </p>
+                    </button>
+
+                    <button id="maps" class="button maps" onclick="window.location.href = 'https://www.google.ru/maps?hl=ru';">
+                        <span> <img src="https://png2.cleanpng.com/sh/129e7f1146f998b97d69d1ad15d81f04/L0KzQYm3U8MyN5Z3j5H0aYP2gLBuTgJme6F0huVydnWwh7bpTfRme5pshp98b3Pscb20jfVlcZIyf9H4Z3zoPb7okQMua5DyRd9qcD3sc7F1TcViapdmfqUDMnO0QrKCTsg3PGE7T6M8MUW1Qoa4UcY4OmI9SKc3cH7q/kisspng-responsive-web-design-social-media-google-maps-com-map-icon-5abfaf382c12a9.8640671315225116721805.png" width="50" height="50"></span>
+                        <p> Карты </p>
+                    </button>
+
+                    <button id="youtube" class="button youtube" onclick="window.location.href = 'https://www.youtube.com/';">
+                        <span> <img src="youtube.png" width="50" height="50"></span>
+                        <p> YouTube </p>
+                    </button>
+
+                    <button id="play" class="button play" onclick="window.location.href = 'https://play.google.com/store/games?hl=ru';">
+                        <span> <img src="play.png" width="50" height="50"></span>
+                        <p> Play </p>
+                    </button>
+
+                    <button id="news" class="button news" onclick="window.location.href = 'https://news.google.com/topstories?hl=ru&gl=RU&ceid=RU:ru';">
+                        <span> <img src="news.png" width="50" height="50"></span>
+                        <p> Новости </p>
+                    </button>
+
+                    <button id="mail" class="button mail" onclick="window.location.href = 'https://www.google.com/intl/ru/gmail/about/';">
+                        <span> <img src="mail.png" width="50" height="50"></span>
+                        <p> Почта </p>
+                    </button>
+
+                    <button id="meet" class="button meet" onclick="window.location.href = 'https://apps.google.com/meet/?hs=197';">
+                        <span> <img src="meet.png" width="50" height="50"></span>
+                        <p> Meet </p>
+                    </button>
+
+                    <button id="chat" class="button chat" onclick="window.location.href = 'https://chat.google.com/';">
+                        <span> <img src="https://play-lh.googleusercontent.com/cF_oWC9Io_I9smEBhjhUHkOO6vX5wMbZJgFpGny4MkMMtz25iIJEh2wASdbbEN7jseAx" width="50" height="50"></span>
+                        <p> Chat </p>
+                    </button>
+
+                    <button id="contacts" class="button contacts" onclick="window.location.href = 'https://contacts.google.com';">
+                        <span> <img src="contacts.png" width="50" height="50"></span>
+                        <p> Контакты </p>
+                    </button>
+
+                    <button id="disk" class="button disk" onclick="window.location.href = 'https://drive.google.com/drive/my-drive?hl=ru';">
+                        <span> <img src="disk.png" width="50" height="50"></span>
+                        <p> Диск </p>
+                    </button>
+
+                    <button id="calendar" class="button calendar" onclick="window.location.href = 'https://calendar.google.com/calendar/u/0/r';">
+                        <span> <img src="calendar.png" width="50" height="50"></span>
+                        <p> Календарь </p>
+                    </button>
+
+                    <button id="translator" class="button translator" onclick="window.location.href = 'https://translate.google.ru/?hl=ru';">
+                        <span> <img src="translator.png" width="50" height="50"></span>
+                        <p> Переводчик </p>
+                    </button>
+
+                    <button id="photo" class="button photo" onclick="window.location.href = 'https://photos.google.com/?pageId=none&pli=1';">
+                        <span> <img src="photo.png" width="50" height="50"></span>
+                        <p> Фото </p>
+                    </button>
+
+                    <button id="duo" class="button duo" onclick="window.location.href = 'https://duo.google.com/?usp=duo_ald';">
+                        <span> <img src="duo.png" width="50" height="50"></span>
+                        <p> Duo </p>
+                    </button>
+
+                    <button id="other" class="button other" onclick="window.location.href = 'https://about.google/products/';">
+                        <p> Другие приложения и продукты от Google </p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <p> <img style="position: fixed; top: 150px; left: 630px;" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" /> </p>
+            <button id="text1" class="buttonCenter text1" onclick="window.location.href = 'https://www.google.com/';"
+                    style="position: relative; top: 270px; right: 10px;">
+                <p style="font-size: 14px; font-family: arial,sans-serif;">Поиск в Google</p>
+            </button>
+
+            <button id="text1" class="buttonCenter text2" onclick="window.location.href = 'https://www.google.com/doodles';"
+                    style="position: relative; top: 270px; right: 2px;">
+                <p style="font-size: 14px; font-family: arial,sans-serif;">Мне повезёт!</p>
+            </button>
+            <div class="wrap" style="position:relative;">
+                <!--поисковая строка-->
+                <div class="searchT">
+
+                    <button type="submit" class="searchButton">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2866/2866321.png" width="20" height="20" />
+                    </button>
+
+                    <input type="text" class="searchTerm">
+
+                    <button type="submit" class="keyboardButton">
+                        <img src="https://www.gstatic.com/inputtools/images/tia.png" width="23" height="12" />
+                    </button>
+
+                    <button type="submit" class="microButton">
+                        <img src="https://cdn.icon-icons.com/icons2/2642/PNG/512/google_mic_logo_icon_159335.png" width="35" height="35" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="clear">
+
+        </div>
+
+        <div id="footer">
+            <div id="footer1">
+                <p style="position: relative; left: -700px; top: 20px; font-family: Tahoma; font-size: 17px; color: #919294f1"> Россия </p>
+            </div>
+            <div id="footer2">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAMAAAAiV0Z6AAAAPFBMVEVLoEN0wU6CzFKCzFKCzFKCzFKCzFJSo0MSczNDmkCCzFJPoUMTczNdr0gmgziCzFITczMTczMTczMTczPh00jOAAAAFHRSTlPF/+bIsms8Ad///hX+//5/tXw7aMEAx10AAACaSURBVHgBbc4HDoRQCATQ33tbvf9dF9QxaCT9UQaltLHOh/golXKhMs5Xqa0xU1lyoa2fXFyQOsDG38qsLy4TaV+sFislovyhPzLJJrBu6eQOtpW0LjbJkzTuTDLRVNKa3uxJI+VdiRqXSeu6GW+Qxi29eLIi8H7EsYrT42BD+mQtNO5JMjRuC4lSY8V4hsLX0egGijvUSEP9AbylEsOkeCgWAAAAAElFTkSuQmCC" width="15" height="15" style="position:relative; top: 23px; left:400px;" /> <a href="https://sustainability.google/"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     style="position: relative; top: 20px; left:400px; color: #919294f1"> Нулевой баланс выбросов углекислого газа с 2007 года </a>
+                <a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1"
+                   style="position: relative; top: 90px; left:-575px; color: #919294f1"> Всё о Google </a>
+                <a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1"
+                   style="position: relative; top: 90px; left: -550px; color: #919294f1"> Реклама </a>
+                <a href="https://www.google.ru/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none"
+                   style="position: relative; top: 90px; left: -530px; color: #919294f1"> Для бизнеса </a>
+                <a href="https://www.google.com/search/howsearchworks/?fg=1"
+                   style="position: relative; top: 90px; left: -510px; color: #919294f1"> Как работает Google Поиск </a>
+                <a href="https://policies.google.com/privacy?hl=ru&fg=1" style="position: relative; top: 90px; left: 130px; color: #919294f1"> Конфиденциальность </a>
+                <a href="https://policies.google.com/terms?hl=ru&fg=1" style="position: relative; top: 90px; left: 160px; color: #919294f1"> Условия </a>
+                <a href="https://www.google.ru/preferences?hl=ru&fg=1" style="position: relative; top: 90px; left: 190px; color: #919294f1"> Настройки </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
